@@ -2,8 +2,10 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MainPage from "../pages/MainPage";
-import ServicesPage from "../pages/ServicesPage";
+import ListServicePage from "../pages/ListServicesPage";
+import ArrangementPage from "../pages/ArrangementPage"
 import { ProtectedRoute } from "./ProtectedRoute";
+import ServicePage from "../pages/ServicePage";
 
 export const router = createBrowserRouter([
     {
@@ -36,10 +38,26 @@ export const router = createBrowserRouter([
         path: "services",
         element: (
             <ProtectedRoute>
-                <ServicesPage />
+                <ListServicePage />
             </ProtectedRoute>
         ),
     },
+    {
+        path: "service/:idService", // Ruta dinámica
+        element: (
+            <ProtectedRoute>
+                <ServicePage/>
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: "service/:idService/arrangement", // Ruta dinámica
+        element: (
+            <ProtectedRoute>
+                <ArrangementPage />
+            </ProtectedRoute>
+        ),
+    }
     // {
     //     path: "*",
     //     element: <NotFoundPage />

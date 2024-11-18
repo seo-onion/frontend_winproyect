@@ -1,6 +1,7 @@
 import { TagResponse } from "../tag/TagResponse";
 
 export interface ServiceResponse {
+    id: number;
     name: string;
     provider: string;
     description: string;

@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { ServiceResponse } from "../interfaces/serviceEntity/ServiceResponse";
 import ServiceItem from "../components/ServiceItem";
 
-const ServicesList = () => {
+const ListServicesPage = () => {
   const { token } = useAuth();
   const [Content, setContent] = useState<ServiceResponse[]>([]); // Usar el tipo adecuado
   const [page, setPage] = useState(0); // Página actual para cargar más servicios
@@ -36,7 +36,7 @@ const ServicesList = () => {
   const handleScroll = () => {
     if (containerRef.current) {
       const container = containerRef.current;
-  
+      
       // Agregar un pequeño margen para asegurarse de que estamos cerca del final
       const buffer = 1; // 10 píxeles de margen
       const nearBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + buffer;
@@ -71,9 +71,10 @@ const ServicesList = () => {
       <div ref={containerRef} style={{ height: "500px", overflowY: "auto" }} >
         <ol>
           {Content.length > 0 ? (
-            Content.map((element, index) => (
+            Content.map((element) => (
               <ServiceItem
-                key={index}
+                id={element.id}
+                key={element.id}
                 provider={element.provider}
                 description={element.description}
                 name={element.name}
@@ -94,4 +95,4 @@ const ServicesList = () => {
   );
 };
 
-export default ServicesList;
+export default ListServicesPage;

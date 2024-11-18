@@ -1,11 +1,13 @@
 import { ServiceResponse } from "../interfaces/serviceEntity/ServiceResponse";
+import ButtonComponent from "./ButtonComponent";
 
 
 const ServiceItem = (props: ServiceResponse) => {
     
-    const {provider, description, name, address, suggestedPrice,avgRating, tags} = props
-
+    const {provider, description, name, address, suggestedPrice,avgRating, tags, id} = props
+    
     return (
+    
     <li>
       <h3>{name}</h3>
       <p><strong>Ofrecido por: {provider}</strong></p>  
@@ -21,6 +23,8 @@ const ServiceItem = (props: ServiceResponse) => {
           ))}
         </ul>
       </div>
+    
+    <ButtonComponent textContent="Mas informacion" goTo={`/service/${id}`} />
     </li>
   );
 };
